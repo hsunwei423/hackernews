@@ -5,10 +5,10 @@
 const debug = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  assetPrefix: !debug ? '/hsunwei423/hackernews' : '',
+  assetPrefix: !debug ? '/hackernews' : '',
   exportPathMap: function () {
     return {
-      '/': { page: '/' },
+      '/': { page: '/new' },
       '/new': { page: '/new' },
       '/top': { page: '/top' },
       '/best': { page: '/best' },
