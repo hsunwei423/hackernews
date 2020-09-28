@@ -5,5 +5,25 @@
 const debug = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  assetPrefix: !debug ? '/Next-gh-page-example/' : '',
+  assetPrefix: !debug ? '/hsunwei423/hackernews' : '',
+  exportPathMap: function () {
+    return {
+      '/': { page: '/' },
+      '/new': { page: '/new' },
+      '/top': { page: '/top' },
+      '/best': { page: '/best' },
+      '/ask': { page: '/ask' },
+      '/jobs': { page: '/jobs' },
+      '/show': { page: '/show' }
+    }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/new',
+        permanent: true,
+      },
+    ]
+  },
 }
