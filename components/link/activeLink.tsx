@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 type styleType = {
     marginRight: number,
@@ -22,9 +23,11 @@ function ActiveRouter({ children, href }) {
     }
     
     return (
-        <a 
-            href={href}
-            onClick={handleClick} 
+        <a
+            // href={href}
+            // as={process.env.BACKEND_URL + '/new'}
+            href={process.env.BACKEND_URL + '/new'}
+            onClick={handleClick}
             style={style}
         >
             {children}

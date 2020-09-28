@@ -1,27 +1,28 @@
 import Link from 'next/link'
+import { stringify } from 'querystring'
 import ActiveLink from '../components/link/activeLink'
 
-
 export default function Nav() {
+    
     return (
         <nav>
-            <ActiveLink href="/new" as={process.env.BACKEND_URL + '/new'}>
+            <ActiveLink href="/new">
                 New
             </ActiveLink>
-            <ActiveLink href="/top"as={process.env.BACKEND_URL + '/top'}>
+            <ActiveLink href="/top">
                 Top Stories
             </ActiveLink>
-            <ActiveLink href="/best" as={process.env.BACKEND_URL + '/best'}>
+            <ActiveLink href="/best">
                 Best Stories
             </ActiveLink>
-            <ActiveLink href="/ask" as={process.env.BACKEND_URL + '/ask'}>
+            <ActiveLink href="/ask">
                 Ask
             </ActiveLink>
             
-            <ActiveLink href="/jobs" as={process.env.BACKEND_URL + '/jobs'}>
+            <ActiveLink href="/jobs">
                 Jobs
             </ActiveLink>
-            <ActiveLink href="/show" as={process.env.BACKEND_URL + '/show'}>
+            <ActiveLink href="/show">
                 Show
             </ActiveLink>
         <style jsx>{`
