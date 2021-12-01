@@ -1,0 +1,23 @@
+.container {
+  margin-bottom: 30px;
+  width: 100%;
+  padding: 0 30%;
+  flex-basis: 40px;
+}
+.time-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  > * + * {
+    margin-left: 10px;
+  }
+}
+.link {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #2e2e2e;
+}
+.divider {
+  border-top: #979797 1px;
+  width: 100%;
+}

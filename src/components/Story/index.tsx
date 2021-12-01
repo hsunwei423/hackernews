@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getStories } from "api/http";
 import { Skeleton } from "antd";
 
+import style from './style.module.scss';
+
 export function Story({ storyId }) {
   const [story, setStory] = useState({
     by: "",
@@ -40,43 +42,18 @@ export function Story({ storyId }) {
   }, [storyId]);
 
   return (
-    <div className="container">
+    <div className={style.container}>
       <Skeleton loading={loading} active>
-        <div className="time-container">
-          <div className="item">{time}</div>
-          <div className="item">•</div>
-          <div className="item">{story.by}</div>
+        <div className={style['time-container']}>
+          <div>{time}</div>
+          <div>•</div>
+          <div>{story.by}</div>
         </div>
-        <a href={story.url} target="_blank" rel="noreferrer noopener">
+        <a className={style.link} href={story.url} target="_blank" rel="noreferrer noopener">
           {story.title}
         </a>
-        <hr />
+        <hr className={style.divider} />
       </Skeleton>
-      <style jsx>{`
-        .container {
-          margin-bottom: 30px;
-          width: 100%;
-          padding: 0 30%;
-          flex-basis: 40px;
-        }
-        .time-container {
-          display: flex;
-          align-items: center;
-        }
-        .item {
-          font-size: 14px;
-          margin-right: 10px;
-        }
-        a {
-          font-size: 1rem;
-          text-decoration: none;
-          color: #2e2e2e;
-        }
-        hr {
-          border-top: #979797 1px;
-          width: 100%;
-        }
-      `}</style>
     </div>
   );
 }
