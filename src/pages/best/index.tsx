@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import Layout from 'components/layout'
-import { getNewStoryIds, getStories } from 'api/http'
-import Story from 'components/story'
-import { Pagination } from 'antd';
+import React, { useEffect, useState } from 'react'
+import Layout from 'components/Layout'
+import { getBestStoryIds } from 'api/http'
+import Story from 'components/Story'
+import { Pagination } from 'antd'
 
-type ids = String[]
-
-
-export default function New() {
-    const [storyIds, setStoryIds] = useState<String[]>([]);
-    const [index, setIndex] = useState<number>(0);
-    const [page, setPage] = useState<number>(1);
+export default function Best() {
+    const [storyIds, setStoryIds] = useState([]);
+    const [index, setIndex] = useState(0);
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+    
 
     useEffect(() => {
-        getNewStoryIds()
+        getBestStoryIds()
             .then(res => {
                 setStoryIds(res.data);
+                setLoading(false);
             })
     }, []);
-    
+
     const handlePage = (page: number, pageSize: number) => {
         setIndex(page * 10 - 10);
         setPage(page);
@@ -51,21 +51,3 @@ export default function New() {
         </Layout>
     )
 }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//     let data = [];
-//     let loading = true;
-//     await getNewStoryIds()
-//             .then(res => {
-//                 data = res.data;
-//                 loading = false;
-//             })
-
-//     return {
-//         props: {
-//             storyIds: data,
-//             loading: loading
-//         }
-//     }
-    
-// }

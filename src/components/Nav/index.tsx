@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { stringify } from 'querystring'
-import ActiveLink from './link/activeLink'
+import ActiveLink from '../Link/activeLink'
 
 export default function Nav() {
     

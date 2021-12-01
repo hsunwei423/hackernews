@@ -1,5 +1,5 @@
-import Nav from "./nav"
-import style from 'components/layout.module.scss'
+import Nav from "components/Nav"
+import style from './layout.module.scss'
 
 export function Layout({ children }) {
     return (

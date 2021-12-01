@@ -1,21 +1,19 @@
+import Layout from 'components/Layout'
 import React, { useState, useEffect } from 'react'
-import Layout from 'components/layout'
-import { getJobStoryIds, getStories } from 'api/http'
-import Story from 'components/story'
-import { Pagination } from 'antd';
+import { Pagination } from 'antd'
+import { getTopStoryIds } from 'api/http'
+import Story from 'components/Story'
 
-export default function Jobs() {
+
+export default function Top() {
     const [storyIds, setStoryIds] = useState([]);
     const [index, setIndex] = useState(0);
     const [page, setPage] = useState(1);
-    const [loading, setLoading] = useState(true);
-    
 
     useEffect(() => {
-        getJobStoryIds()
+        getTopStoryIds()
             .then(res => {
                 setStoryIds(res.data);
-                setLoading(false);
             })
     }, []);
 
@@ -37,17 +35,15 @@ export default function Jobs() {
                     />
                 ))
             }
-            { storyIds.length != 0 &&
-                <Pagination
-                    style={{
-                        alignContent: 'center'
-                    }}
-                    total={50}
-                    pageSize={9}
-                    current={page}
-                    onChange={handlePage}
-                />
-            }
+            <Pagination
+                style={{
+                    alignContent: 'center'
+                }}
+                total={50}
+                pageSize={9}
+                current={page}
+                onChange={handlePage}
+            />
         </Layout>
     )
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getStories } from '../api/http'
-import { mapTime } from '../mappers/timeMapper'
+import { getStories } from 'api/http'
 import { Skeleton } from 'antd'
 
 

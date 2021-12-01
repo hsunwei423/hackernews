@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Layout from 'components/layout'
-import { getBestStoryIds } from 'api/http'
-import Story from 'components/story'
-import { Pagination } from 'antd'
+import React, { useState, useEffect } from 'react'
+import Layout from 'components/Layout'
+import { getAskStoryIds } from 'api/http'
+import Story from 'components/Story'
+import { Pagination } from 'antd';
 
-export default function Best() {
+export default function Ask() {
     const [storyIds, setStoryIds] = useState([]);
     const [index, setIndex] = useState(0);
     const [page, setPage] = useState(1);
@@ -12,7 +12,7 @@ export default function Best() {
     
 
     useEffect(() => {
-        getBestStoryIds()
+        getAskStoryIds()
             .then(res => {
                 setStoryIds(res.data);
                 setLoading(false);
