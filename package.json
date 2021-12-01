@@ -6,11 +6,13 @@
     "build": "cross-env NODE_ENV=production && next build",
     "start": "next start",
     "export": "next export",
+    "eslint": "eslint src --ext .tsx",
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "antd": "^4.6.6",
     "axios": "^0.20.0",
+    "eslint": "^8.3.0",
     "next": "latest",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@types/node": "^16.11.11",
     "@types/react": "^17.0.37",
+    "@typescript-eslint/parser": "^5.5.0",
     "babel-plugin-transform-define": "^1.3.0",
     "cross-env": "^7.0.2",
     "gh-pages": "^3.1.0",
