@@ -1,8 +1,8 @@
-module.export = {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "@typescript-eslint/rule-name": "error"
-  },
-  "extends": ["plugin:@typescript-eslint/recommended"]
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  plugins: [
+    "@typescript-eslint",
+    "eslint-plugin-react"
+  ],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"]
 }
