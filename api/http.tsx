@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-export const baseURL = 'https://hacker-news.firebaseio.com/v0';
-export const newstoriesURL = `${baseURL}/newstories.json`;
-export const topstoriesURL = `${baseURL}/topstories.json`;
-export const beststoriesURL = `${baseURL}/beststories.json`;
+export const baseURL: string = 'https://hacker-news.firebaseio.com/v0';
+export const newstoriesURL: string = `${baseURL}/newstories.json`;
+export const topstoriesURL: string = `${baseURL}/topstories.json`;
+export const beststoriesURL: string = `${baseURL}/beststories.json`;
 
-export const askstoriesURL = `${baseURL}/askstories.json`;
-export const showstoriestoriesURL = `${baseURL}/showstories.json`;
-export const jobstoriesURL = `${baseURL}/jobstories.json`;
+export const askstoriesURL: string = `${baseURL}/askstories.json`;
+export const showstoriestoriesURL: string = `${baseURL}/showstories.json`;
+export const jobstoriesURL: string = `${baseURL}/jobstories.json`;
 
 export const getNewStoryIds = async () => {
     return await axios
