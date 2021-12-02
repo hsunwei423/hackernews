@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Layout from "components/Layout";
-import { getBestStoryIds } from "api/http";
-import Story from "components/Story";
-import { Pagination } from "antd";
+import Head from 'next/head';
+import React, { useEffect, useState } from 'react';
+import Layout from 'components/Layout';
+import { getBestStoryIds } from 'api/http';
+import Story from 'components/Story';
+import { Pagination } from 'antd';
 
 export default function Best() {
   const [storyIds, setStoryIds] = useState([]);
@@ -33,21 +34,26 @@ export default function Best() {
   };
 
   return (
-    <Layout>
-      {storyIds.slice(index, index + 10).map((e, index) => (
-        <Story key={index} storyId={e} />
-      ))}
-      {storyIds.length != 0 && (
-        <Pagination
-          style={{
-            alignContent: "center",
-          }}
-          total={50}
-          pageSize={9}
-          current={page}
-          onChange={handlePage}
-        />
-      )}
-    </Layout>
+    <>
+      <Head>
+        <title>Hacker News | Best Stories</title>
+      </Head>
+      <Layout>
+        {storyIds.slice(index, index + 10).map((e, index) => (
+          <Story key={index} storyId={e} />
+        ))}
+        {storyIds.length != 0 && (
+          <Pagination
+            style={{
+              alignContent: 'center',
+            }}
+            total={50}
+            pageSize={9}
+            current={page}
+            onChange={handlePage}
+          />
+        )}
+      </Layout>
+    </>
   );
 }

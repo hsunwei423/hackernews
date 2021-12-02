@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { getStories } from "api/http";
-import { Skeleton } from "antd";
+import React, { useEffect, useState } from 'react';
+import { getStories } from 'api/http';
+import { Skeleton } from 'antd';
 
 import style from './style.module.scss';
 
 export function Story({ storyId }) {
   const [story, setStory] = useState({
-    by: "",
-    descendants: "",
+    by: '',
+    descendants: '',
     time: 0,
     id: 0,
     score: 0,
-    title: "",
-    url: "",
-    type: "",
+    title: '',
+    url: '',
+    type: '',
     kids: [],
   });
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -25,11 +25,11 @@ export function Story({ storyId }) {
       .then((res) => {
         setStory(res.data);
         // set time
-        let timestamp = res.data.time;
-        let date = new Date(timestamp * 1000);
-        let timestring = `${date.getMonth()}, ${date.getDate()} - ${date.toLocaleString(
-          "en",
-          { weekday: "short" }
+        const timestamp = res.data.time;
+        const date = new Date(timestamp * 1000);
+        const timestring = `${date.getMonth()}, ${date.getDate()} - ${date.toLocaleString(
+          'en',
+          { weekday: 'short' }
         )}, ${date.getUTCFullYear()}`;
         setTime(timestring);
       })
@@ -49,7 +49,12 @@ export function Story({ storyId }) {
           <div>•</div>
           <div>{story.by}</div>
         </div>
-        <a className={style.link} href={story.url} target="_blank" rel="noreferrer noopener">
+        <a
+          className={style.link}
+          href={story.url}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           {story.title}
         </a>
         <hr className={style.divider} />

@@ -7,7 +7,7 @@
     "start": "next start",
     "export": "next export",
     "eslint": "eslint src --ext .ts,.tsx",
-    "prettier": "prettier '**/*.{js.jsx.ts.tsx}' --write",
+    "prettier": "prettier '**/*.{ts,tsx}' --write",
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
@@ -42,7 +42,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
+    "**/*.{ts,tsx}": [
       "yarn prettier",
       "eslint"
     ]
