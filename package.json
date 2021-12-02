@@ -10,9 +10,6 @@
     "prettier": "prettier '**/*.{js.jsx.ts.tsx}' --write",
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged --verbose"
-  },
   "dependencies": {
     "antd": "^4.6.6",
     "axios": "^0.20.0",
@@ -39,6 +36,11 @@
     "typescript": "^4.5.2"
   },
   "homepage": "http://hsunwei423.github.io/hackernews",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
       "yarn prettier",
