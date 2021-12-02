@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getStories } from 'api/http';
 import { Skeleton } from 'antd';
+import { getYear, getMonth, getDate } from 'date-fns';
 
 import style from './style.module.scss';
 
@@ -25,12 +26,13 @@ export function Story({ storyId }) {
       .then((res) => {
         setStory(res.data);
         // set time
-        const timestamp = res.data.time;
-        const date = new Date(timestamp * 1000);
-        const timestring = `${date.getMonth()}, ${date.getDate()} - ${date.toLocaleString(
-          'en',
-          { weekday: 'short' }
-        )}, ${date.getUTCFullYear()}`;
+        const timestamp = res.data.time * 1000;
+        const date = new Date(timestamp);
+        const timestring = `${getMonth(timestamp)}, ${getDate(
+          timestamp
+        )} - ${date.toLocaleString('en', { weekday: 'short' })}, ${getYear(
+          timestamp
+        )}`;
         setTime(timestring);
       })
       .catch((err) => {
