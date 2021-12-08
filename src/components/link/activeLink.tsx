@@ -17,21 +17,12 @@ function ActiveRouter({ children, href }) {
     fontWeight: router.pathname === href ? 500 : 350,
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    router.push(href);
-  };
-
   return (
-    <a
-      // href={href}
-      // as={process.env.BACKEND_URL + '/new'}
-      href={process.env.BACKEND_URL + '/new'}
-      onClick={handleClick}
-      style={style}
-    >
-      {children}
-    </a>
+    <Link href={href}>
+      <a style={style}>
+        {children}
+      </a>
+    </Link>
   );
 }
 

@@ -1,33 +1,47 @@
-import ActiveLink from '../Link/activeLink';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function Nav() {
+import style from './style.module.scss';
+
+const ROUTE_LIST = [
+  {
+    href: '/new',
+    name: 'New'
+  },
+  {
+    href: '/top',
+    name: 'Top Stories'
+  },
+  {
+    href: '/best',
+    name: 'Best Stories'
+  },
+  {
+    href: '/ask',
+    name: 'Ask'
+  },
+  {
+    href: '/jobs',
+    name: 'Jobs'
+  },
+  {
+    href: '/show',
+    name: 'Show'
+  },
+]
+
+export default function Nav():JSX.Element {
+  const router = useRouter();
+
   return (
-    <nav>
-      <ActiveLink href="/new">New</ActiveLink>
-      <ActiveLink href="/top">Top Stories</ActiveLink>
-      <ActiveLink href="/best">Best Stories</ActiveLink>
-      <ActiveLink href="/ask">Ask</ActiveLink>
-
-      <ActiveLink href="/jobs">Jobs</ActiveLink>
-      <ActiveLink href="/show">Show</ActiveLink>
-      <style jsx>{`
-        nav {
-          height: 2rem;
-          position: sticky;
-          top: 0px;
-          z-index: 99;
-          background-color: #fff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-        }
-        @media (max-width: 600px) {
-          nav {
-            overflow-x: scroll;
-          }
-        }
-      `}</style>
+    <nav className={style.container}>
+      {
+        ROUTE_LIST.map(d => (
+          <Link key={d.name} href={d.href}>
+            <a className={`${style.link} ${router.pathname === d.href && style.active}`}>{d.name}</a>
+          </Link>
+        ))
+      }
     </nav>
   );
 }

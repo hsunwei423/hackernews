@@ -1,0 +1,19 @@
+.container {
+  height: 2rem;
+  position: sticky;
+  top: 0px;
+  z-index: 99;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 24px;
+}
+
+.link {
+  color: #000;
+
+  &.active {
+    font-weight: 500;
+  }
+}
