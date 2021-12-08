@@ -6,7 +6,7 @@ export function Layout({ children }) {
     <div className={style.container}>
       <Nav />
       <div className={style.title}>Hacker News</div>
-      <div className={style.content}>{children}</div>
+      {children}
     </div>
   );
 }
