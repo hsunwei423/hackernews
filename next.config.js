@@ -5,25 +5,29 @@
 const debug = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  assetPrefix: !debug ? '/hackernews' : '',
-  exportPathMap: function () {
-    return {
-      '/': { page: '/new' },
-      '/new': { page: '/new' },
-      '/top': { page: '/top' },
-      '/best': { page: '/best' },
-      '/ask': { page: '/ask' },
-      '/jobs': { page: '/jobs' },
-      '/show': { page: '/show' }
-    }
-  },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/new',
-        permanent: true,
-      },
-    ]
-  },
+  // assetPrefix: !debug ? '/hackernews' : '',
+  // images: {
+  //   loader: 'imgix',
+  //   path: '',
+  // },
+  // exportPathMap: function () {
+  //   return {
+  //     '/': { page: '/new' },
+  //     '/new': { page: '/new' },
+  //     '/top': { page: '/top' },
+  //     '/best': { page: '/best' },
+  //     '/ask': { page: '/ask' },
+  //     '/jobs': { page: '/jobs' },
+  //     '/show': { page: '/show' }
+  //   }
+  // },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/new',
+  //       permanent: true,
+  //     },
+  //   ]
+  // },
 }
