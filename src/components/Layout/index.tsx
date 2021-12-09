@@ -1,11 +1,10 @@
-import Nav from 'components/Nav';
+import Header from 'components/Header';
 import style from './layout.module.scss';
 
 export function Layout({ children }) {
   return (
     <div className={style.container}>
-      <Nav />
-      <div className={style.title}>Hacker News</div>
+      <Header />
       {children}
     </div>
   );
