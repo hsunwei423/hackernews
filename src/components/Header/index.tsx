@@ -11,7 +11,14 @@ const Header = (): ReactElement => {
         <Image src="/imgs/logo.svg" width={24} height={24} />
         <span>Hacker News</span>
       </div>
-      <Nav />
+      <div>
+        <div className={style.burger}>
+          <Image src="/imgs/menu.png" width={24} height={24} />
+        </div>
+        <div className={style.nav}>
+          <Nav />
+        </div>
+      </div>
     </header>
   )
 }

@@ -17,3 +17,17 @@
   column-gap: 12px;
   font-weight: 500;
 }
+.burger {
+  display: block;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+.nav {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
