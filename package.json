@@ -20,7 +20,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-virtualized": "^9.22.3",
-    "sass": "^1.26.11"
+    "sass": "^1.26.11",
+    "swr": "^1.1.0"
   },
   "license": "MIT",
   "devDependencies": {

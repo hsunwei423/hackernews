@@ -1,63 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { getStories } from 'api/http';
-import { Skeleton } from 'antd';
+import React from 'react';
 import { getYear, getMonth, getDate } from 'date-fns';
+import useSWR from 'swr';
+import apiInstance from 'api';
+
+import { Skeleton } from 'antd';
 
 import style from './style.module.scss';
 
-export function Story({ storyId, cssStyle }) {
-  const [story, setStory] = useState({
-    by: '',
-    descendants: '',
-    time: 0,
-    id: 0,
-    score: 0,
-    title: '',
-    url: '',
-    type: '',
-    kids: [],
-  });
-  const [time, setTime] = useState('');
-  const [loading, setLoading] = useState(false);
+const fetcher = url => apiInstance.get(url).then(res => res.data);
 
-  useEffect(() => {
-    setLoading(true);
-    getStories(storyId)
-      .then((res) => {
-        setStory(res.data);
-        // set time
-        const timestamp = res.data.time * 1000;
-        const date = new Date(timestamp);
-        const timestring = `${getMonth(timestamp)}, ${getDate(
-          timestamp
-        )} - ${date.toLocaleString('en', { weekday: 'short' })}, ${getYear(
-          timestamp
-        )}`;
-        setTime(timestring);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [storyId]);
+export function Story({ storyId, cssStyle }) {
+  const { data: story, error } = useSWR(
+    `/item/${storyId}.json`,
+    fetcher
+  );
+  const loading = !story && !error;
+
+  const renderTime = () => {
+    if (!story?.time) {
+      return '-'
+    }
+    const timestamp = story.time * 1000;
+    const date = new Date(timestamp);
+    return `${getMonth(timestamp)}, ${getDate(
+      timestamp
+    )} - ${date.toLocaleString('en', { weekday: 'short' })}, ${getYear(
+      timestamp
+    )}`;
+  };
 
   return (
     <div className={style.container} style={cssStyle}>
       <Skeleton loading={loading} active>
         <div className={style['time-container']}>
-          <div>{time}</div>
-          <div>•</div>
-          <div>{story.by}</div>
+          {`${renderTime()} • ${story?.by}`}
         </div>
         <a
           className={style.link}
-          href={story.url}
+          href={story?.url}
           target="_blank"
           rel="noreferrer noopener"
         >
-          {story.title}
+          {story?.title}
         </a>
         <hr className={style.divider} />
       </Skeleton>
