@@ -29,6 +29,10 @@ export function Story({ storyId, cssStyle }) {
     )}`;
   };
 
+  if (error) {
+    return 'something went wrong ...';
+  }
+
   return (
     <div className={style.container} style={cssStyle}>
       <Skeleton loading={loading} active>
