@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <link
             rel="icon"
             type="image/png"
-            href="/imgs/favicon.png"
+            href="imgs/favicon.png"
             sizes="32*32"
           />
         </Head>
