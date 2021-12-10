@@ -2,14 +2,11 @@ import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Layout from 'components/Layout';
 import { getAskStoryIds } from 'api/http';
-import Story from 'components/Story';
-import { Pagination } from 'antd';
+import Listview from 'components/Listview';
 
 export default function Ask() {
-  const [storyIds, setStoryIds] = useState([]);
-  const [index, setIndex] = useState(0);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [storyIds, setStoryIds] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     setLoading(true);
@@ -22,34 +19,13 @@ export default function Ask() {
       });
   }, []);
 
-  const handlePage = (page: number, pageSize: number) => {
-    setIndex(page * 10 - 10);
-    setPage(page);
-
-    // page 1: 0 ~ 9
-    // page 2: 10 ~ 19
-  };
-
   return (
     <>
       <Head>
         <title>Hacker News | Ask</title>
       </Head>
       <Layout>
-        {storyIds.slice(index, index + 10).map((e, index) => (
-          <Story key={index} storyId={e} />
-        ))}
-        {storyIds.length != 0 && (
-          <Pagination
-            style={{
-              alignContent: 'center',
-            }}
-            total={50}
-            pageSize={9}
-            current={page}
-            onChange={handlePage}
-          />
-        )}
+        <Listview storyIds={storyIds} />
       </Layout>
     </>
   );
