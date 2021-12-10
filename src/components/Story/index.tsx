@@ -7,7 +7,7 @@ import { Skeleton } from 'antd';
 
 import style from './style.module.scss';
 
-const fetcher = url => apiInstance.get(url).then(res => res.data);
+const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
 export function Story({ storyId, cssStyle }) {
   const { data: story, error } = useSWR(
@@ -16,7 +16,7 @@ export function Story({ storyId, cssStyle }) {
   );
   const loading = !story && !error;
 
-  const renderTime = () => {
+  const renderTime = ():string => {
     if (!story?.time) {
       return '-'
     }
