@@ -5,7 +5,7 @@ import { getYear, getMonth, getDate } from 'date-fns';
 
 import style from './style.module.scss';
 
-export function Story({ storyId }) {
+export function Story({ storyId, cssStyle }) {
   const [story, setStory] = useState({
     by: '',
     descendants: '',
@@ -44,7 +44,7 @@ export function Story({ storyId }) {
   }, [storyId]);
 
   return (
-    <div className={style.container}>
+    <div className={style.container} style={cssStyle}>
       <Skeleton loading={loading} active>
         <div className={style['time-container']}>
           <div>{time}</div>
