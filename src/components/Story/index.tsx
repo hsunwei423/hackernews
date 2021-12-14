@@ -9,7 +9,7 @@ import style from './style.module.scss';
 
 const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
-export function Story({ storyId, cssStyle }) {
+const Story = ({ storyId, cssStyle }): React.ReactElement => {
   const { data: story, error } = useSWR(
     `/item/${storyId}.json`,
     fetcher
@@ -30,7 +30,9 @@ export function Story({ storyId, cssStyle }) {
   };
 
   if (error) {
-    return 'something went wrong ...';
+    return (
+      <div>something went wrong ...</div>
+    );
   }
 
   return (

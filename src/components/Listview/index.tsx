@@ -10,9 +10,7 @@ const Listview = ({ storyIds = [] }) => {
     style
   }) => {
     const id = storyIds[index];
-    return (
-      <Story key={id} storyId={id} cssStyle={style} />
-    )
+    return <Story key={id} storyId={id} cssStyle={style} />
   };
 
   return (
