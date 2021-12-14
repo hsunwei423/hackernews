@@ -1,14 +1,12 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import Nav from 'components/Nav';
-import Drawer from 'components/Drawer';
 
 import style from './style.module.scss';
 
 const Header = (): ReactElement => {
-  const [showDrawer, setShowDrawer] = useState<boolean>(false);
   const handleDrawer = () => {
     console.log('c!!!')
-    setShowDrawer(prev => !prev);
+    // TODO: open drawer via redux
   };
 
   return (
@@ -26,9 +24,6 @@ const Header = (): ReactElement => {
             className={style.img}
             onClick={handleDrawer}
           />
-          <Drawer isVisible={showDrawer}>
-            1231312312312312312321
-          </Drawer>
         </div>
         <div className={style.nav}>
           <Nav />

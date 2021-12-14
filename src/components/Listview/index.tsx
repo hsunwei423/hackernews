@@ -16,9 +16,12 @@ const Listview = ({ storyIds = [] }) => {
   };
 
   return (
-    <List 
+    <List
+      style={{
+        maxWidth: '100%'
+      }}
       width={720}
-      height={650}
+      height={800}
       rowCount={storyIds.length}
       rowHeight={80}
       rowRenderer={renderStory}

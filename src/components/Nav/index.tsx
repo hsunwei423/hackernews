@@ -3,32 +3,7 @@ import { useRouter } from 'next/router';
 
 import style from './style.module.scss';
 
-const ROUTE_LIST = [
-  {
-    href: '/new',
-    name: 'New'
-  },
-  {
-    href: '/top',
-    name: 'Top Stories'
-  },
-  {
-    href: '/best',
-    name: 'Best Stories'
-  },
-  {
-    href: '/ask',
-    name: 'Ask'
-  },
-  {
-    href: '/jobs',
-    name: 'Jobs'
-  },
-  {
-    href: '/show',
-    name: 'Show'
-  },
-]
+import { ROUTE_LIST } from 'consts'
 
 export default function Nav():JSX.Element {
   const router = useRouter();
