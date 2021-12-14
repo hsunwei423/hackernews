@@ -1,12 +1,15 @@
 import React, { ReactElement } from 'react';
 import Nav from 'components/Nav';
 
+import { useAppDispatch } from 'hooks/reduxHook';
+import { openDrawer } from 'reducers/drawer';
+
 import style from './style.module.scss';
 
 const Header = (): ReactElement => {
+  const dispatch = useAppDispatch();
   const handleDrawer = () => {
-    console.log('c!!!')
-    // TODO: open drawer via redux
+    dispatch(openDrawer());
   };
 
   return (
