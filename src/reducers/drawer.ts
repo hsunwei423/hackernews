@@ -24,6 +24,6 @@ export const DrawerSlice = createSlice({
 
 export const { openDrawer, closeDrawer } = DrawerSlice.actions;
 
-export const isDrawerVisible = (state: RootState) => state.DrawerSlice.isVisible;
+export const isDrawerVisible = (state: RootState) => state.drawerReducer.isVisible;
 
 export default DrawerSlice.reducer;
