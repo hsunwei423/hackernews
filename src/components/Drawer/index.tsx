@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHook';
 import { closeDrawer } from 'reducers/drawer';
 
@@ -8,7 +8,7 @@ type IProps = {
   children: ReactNode
 }
 
-const Drawer: React.FC<IProps> = ({ children }) => {
+const Drawer = ({ children }: IProps): ReactElement => {
   const dispatch = useAppDispatch();
   const isVisible = useAppSelector(state => state.drawerReducer.isVisible);
 

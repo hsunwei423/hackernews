@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { List } from 'react-virtualized';
+import { List, ListRowProps } from 'react-virtualized';
 import Story from 'components/Story'
 
 const Listview = ({ storyIds = [] }) => {
@@ -8,7 +8,7 @@ const Listview = ({ storyIds = [] }) => {
   const renderStory = ({
     index,
     style
-  }) => {
+  }: ListRowProps) => {
     const id = storyIds[index];
     return <Story key={id} storyId={id} cssStyle={style} />
   };
