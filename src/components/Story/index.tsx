@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement, CSSProperties } from 'react';
 import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
@@ -9,7 +9,12 @@ import style from './style.module.scss';
 
 const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
-const Story = ({ storyId, cssStyle }): React.ReactElement => {
+type storyProps = {
+  storyId: string,
+  cssStyle: CSSProperties
+};
+
+const Story = ({ storyId, cssStyle }: storyProps): ReactElement => {
   const { data: story, error } = useSWR(
     `/item/${storyId}.json`,
     fetcher

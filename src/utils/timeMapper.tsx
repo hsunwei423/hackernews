@@ -1,4 +1,4 @@
-export const mapTime = (timestamp) => {
+export const mapTime = (timestamp: number) => {
   const seconds = Math.floor(
     (new Date().getMilliseconds() - timestamp * 1000) / 1000
   );

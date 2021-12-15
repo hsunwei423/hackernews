@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import { List, ListRowProps } from 'react-virtualized';
 import Story from 'components/Story'
 
-const Listview = ({ storyIds = [] }) => {
+type listviewProp = {
+  storyIds: string[]
+};
+
+const Listview = ({ storyIds = [] }: listviewProp): ReactElement => {
 
   const renderStory = ({
     index,
