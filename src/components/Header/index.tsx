@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useRouter } from 'next/router';
 import Nav from 'components/Nav';
 
 import { useAppDispatch } from 'hooks/reduxHook';
@@ -8,13 +9,19 @@ import style from './style.module.scss';
 
 const Header = (): ReactElement => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const handleDrawer = () => {
     dispatch(openDrawer());
   };
 
+  const gotoNew = () => {
+    router.push('/new');
+  };
+
   return (
     <header className={style.container}>
-      <div className={style.logo}>
+      <div className={style.logo} onClick={gotoNew}>
         <img src="imgs/logo.svg" width={24} height={24} className={style.img}/>
         <span>Hacker News</span>
       </div>
