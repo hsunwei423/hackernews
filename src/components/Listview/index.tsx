@@ -17,6 +17,7 @@ const Listview = ({ storyIds = [] }) => {
     <List
       style={{
         maxWidth: '100%',
+        padding: '0 16px',
         maxHeight: 'calc(100% - 40px)'
       }}
       width={720}
