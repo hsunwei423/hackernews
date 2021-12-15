@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHook';
 import { closeDrawer } from 'reducers/drawer';
 
