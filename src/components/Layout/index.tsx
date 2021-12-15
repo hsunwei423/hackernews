@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from 'hooks/reduxHook';
@@ -11,7 +12,11 @@ import { closeDrawer } from 'reducers/drawer';
 import style from './layout.module.scss';
 import { useEffect } from 'react';
 
-export function Layout({ children }) {
+type LayoutProp = {
+  children: ReactNode
+};
+
+export function Layout({ children }: LayoutProp) {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
