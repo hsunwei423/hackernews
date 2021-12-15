@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Nav from 'components/Nav';
 
@@ -7,7 +7,7 @@ import { openDrawer } from 'reducers/drawer';
 
 import style from './style.module.scss';
 
-const Header = (): ReactElement => {
+const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 

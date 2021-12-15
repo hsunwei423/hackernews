@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from 'hooks/reduxHook';
@@ -16,7 +16,7 @@ type LayoutProp = {
   children: ReactNode
 };
 
-export function Layout({ children }: LayoutProp) {
+const Layout: React.FC<LayoutProp> = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 

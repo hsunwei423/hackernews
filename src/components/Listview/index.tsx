@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 import { List, ListRowProps } from 'react-virtualized';
 import Story from 'components/Story'
@@ -7,8 +7,7 @@ type listviewProp = {
   storyIds: string[]
 };
 
-const Listview = ({ storyIds = [] }: listviewProp): ReactElement => {
-
+const Listview: React.FC<listviewProp> = ({ storyIds = [] }) => {
   const renderStory = ({
     index,
     style

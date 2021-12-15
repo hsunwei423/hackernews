@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -5,7 +6,7 @@ import style from './style.module.scss';
 
 import { ROUTE_LIST } from 'consts'
 
-export default function Nav():JSX.Element {
+const Nav: React.FC = () => {
   const router = useRouter();
 
   return (
@@ -20,3 +21,5 @@ export default function Nav():JSX.Element {
     </nav>
   );
 }
+
+export default Nav;

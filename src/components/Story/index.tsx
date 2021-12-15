@@ -9,12 +9,12 @@ import style from './style.module.scss';
 
 const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
-type storyProps = {
+type StoryProps = {
   storyId: string,
   cssStyle: CSSProperties
 };
 
-const Story = ({ storyId, cssStyle }: storyProps): ReactElement => {
+const Story: React.FC<StoryProps> = ({ storyId, cssStyle }) => {
   const { data: story, error } = useSWR(
     `/item/${storyId}.json`,
     fetcher
