@@ -1,5 +1,6 @@
 .container {
-  --size: 24px
+  --size: 24px;
+
   width: var(--size);
   height: var(--size);
 
@@ -8,4 +9,8 @@
 
   border-radius: 50%;
   text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

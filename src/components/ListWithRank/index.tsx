@@ -3,29 +3,27 @@ import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
 
+import CommentWrapper from 'components/CommentWrapper';
 import Comment from 'components/Comment';
 
 import style from './style.module.scss';
 
-const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
+const fetcher = (url: string) => apiInstance.get(url).then((res) => res.data);
 
 type StoryProps = {
-  storyId: string,
-  cssStyle: CSSProperties
+  storyId: string;
+  cssStyle?: CSSProperties;
 };
 
 const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
   const [isCommentVisible, setCommentVisible] = useState(false);
 
-  const { data: story, error } = useSWR(
-    `/item/${storyId}.json`,
-    fetcher
-  );
+  const { data: story, error } = useSWR(`/item/${storyId}.json`, fetcher);
   const loading = !story && !error;
 
-  const renderTime = ():string => {
+  const renderTime = (): string => {
     if (!story?.time) {
-      return '-'
+      return '-';
     }
     const timestamp = story.time * 1000;
     const date = new Date(timestamp);
@@ -37,54 +35,52 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
   };
 
   const handleComment = () => {
-    setCommentVisible(prev => !prev);
+    setCommentVisible((prev) => !prev);
   };
 
   if (error) {
-    return (
-      <div>something went wrong ...</div>
-    );
+    return <div>something went wrong ...</div>;
   }
 
   return (
-    <div className={style.container} style={cssStyle}>
-      <div className={style.rank}>
-        <img src="imgs/arrow-up.svg" alt="arrow" />
-        <div>{story?.score}</div>
-      </div>
-      <div>
-        <a className={style.link} href={story?.url} target="_blank" >{story?.title}</a>
-        <div className={style.detail}>
-          <div className={style.item}>{story?.by}</div>
-          <div>•{renderTime()}</div>
-          {
-            story?.descendants && (
+    <div>
+      <div className={style.container}>
+        <div className={style.rank}>
+          <img src="imgs/arrow-up.svg" alt="arrow" />
+          <div>{story?.score}</div>
+        </div>
+        <div>
+          <a className={style.link} href={story?.url} target="_blank">
+            {story?.title}
+          </a>
+          <div className={style.detail}>
+            <div className={style.item}>{story?.by}</div>
+            <div>•{renderTime()}</div>
+            {story?.descendants && (
               <>
-                <div className={style.divider} /> 
-                <div
-                  className={style.item}
-                  onClick={handleComment}
-                >
+                <div className={style.divider} />
+                <div className={style.item} onClick={handleComment}>
                   {`${story?.descendants} comments`}
                 </div>
               </>
-            )
-          }
+            )}
+          </div>
         </div>
       </div>
+
       {
         isCommentVisible && (
-          <div>
+          <CommentWrapper>
             {
               story?.kids && story?.kids.map((d: string) => (
                 <Comment key={d} id={d} />
               ))
             }
-          </div>
+          </CommentWrapper>
         )
       }
     </div>
-  )
-}
+  );
+};
 
 export default ListWithRank;

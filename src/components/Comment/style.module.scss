@@ -1,3 +1,22 @@
 .container {
-  
+  display: flex;
+  align-items: flex-start;
+  column-gap: 16px;
+}
+
+.content {
+  flex: 1;
+  color: #fff;
+}
+
+.text {
+  flex: 1;
+  white-space: pre-wrap;
+}
+.name {
+  color: #9cb3c9;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+  }
 }

@@ -1,9 +1,9 @@
 .container {
-  width: 100%;
-  max-width: 720px;
+  padding: 16px;
+  background-color: #274059;
+  border-radius: 8px;
+
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  row-gap: 16px;
   column-gap: 16px;
 }
