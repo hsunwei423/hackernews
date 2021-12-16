@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  color: #fff;
+}
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow {
+  position: relative;
+  transform: rotate(180deg);
+}
+
+.link {
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 29px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  color: #9cb3c9;
+  .item {
+    cursor: pointer;
+    &:hover {
+      background-color: #e2e8f0;
+    }
+  }
+}
