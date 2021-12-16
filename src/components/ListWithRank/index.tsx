@@ -1,7 +1,9 @@
-import React, { FC, CSSProperties } from 'react';
+import React, { useState, FC, CSSProperties } from 'react';
 import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
+
+import Comment from 'components/Comment';
 
 import style from './style.module.scss';
 
@@ -13,6 +15,8 @@ type StoryProps = {
 };
 
 const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
+  const [isCommentVisible, setCommentVisible] = useState(false);
+
   const { data: story, error } = useSWR(
     `/item/${storyId}.json`,
     fetcher
@@ -30,6 +34,10 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
     )} - ${date.toLocaleString('en', { weekday: 'short' })}, ${getYear(
       timestamp
     )}`;
+  };
+
+  const handleComment = () => {
+    setCommentVisible(prev => !prev);
   };
 
   if (error) {
@@ -53,12 +61,28 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
             story?.descendants && (
               <>
                 <div className={style.divider} /> 
-                <div className={style.item}>{`${story?.descendants} comments`}</div>
+                <div
+                  className={style.item}
+                  onClick={handleComment}
+                >
+                  {`${story?.descendants} comments`}
+                </div>
               </>
             )
           }
         </div>
       </div>
+      {
+        isCommentVisible && (
+          <div>
+            {
+              story?.kids && story?.kids.map((d: string) => (
+                <Comment key={d} id={d} />
+              ))
+            }
+          </div>
+        )
+      }
     </div>
   )
 }
