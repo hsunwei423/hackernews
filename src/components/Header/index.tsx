@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       <div>
         <div className={style.burger}>
           <img
-            src="imgs/menu.png"
+            src="imgs/menu.svg"
             width={24}
             height={24}
             className={style.img}

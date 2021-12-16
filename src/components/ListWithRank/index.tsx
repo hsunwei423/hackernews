@@ -41,7 +41,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
   return (
     <div className={style.container} style={cssStyle}>
       <div className={style.rank}>
-        <img src="imgs/arrow-24.png" alt="arrow" className={style.arrow} />
+        <img src="imgs/arrow-up.svg" alt="arrow" />
         <div>{story?.score}</div>
       </div>
       <div>
