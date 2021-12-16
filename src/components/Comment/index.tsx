@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import useSWR from 'swr';
 import apiInstance from 'api';
 
@@ -19,6 +19,7 @@ const Comment: FC<CommentProp> = ({ id }) => {
 
   return (
     <div className={style.container}>
+      <div></div>
     </div>
   )
 }

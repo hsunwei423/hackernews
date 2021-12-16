@@ -1,0 +1,11 @@
+.container {
+  --size: 24px
+  width: var(--size);
+  height: var(--size);
+
+  background-size: cover;
+  background-position: top center;
+
+  border-radius: 50%;
+  text-transform: uppercase;
+}
