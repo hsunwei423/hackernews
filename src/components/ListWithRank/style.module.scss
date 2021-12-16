@@ -32,7 +32,13 @@
   .item {
     cursor: pointer;
     &:hover {
-      background-color: #e2e8f0;
+      color: #fff;
     }
+  }
+  .divider {
+    height: 12px;
+    width: 1px;
+    margin: 0 4px;
+    background-color: #9cb3c9;
   }
 }

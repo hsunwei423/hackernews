@@ -49,6 +49,14 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
         <div className={style.detail}>
           <div className={style.item}>{story?.by}</div>
           <div>•{renderTime()}</div>
+          {
+            story?.descendants && (
+              <>
+                <div className={style.divider} /> 
+                <div className={style.item}>{`${story?.descendants} comments`}</div>
+              </>
+            )
+          }
         </div>
       </div>
     </div>
