@@ -34,7 +34,12 @@ const Listview: React.FC<listviewProp> = ({ storyIds = [] }) => {
   return (
     <div className={style.container}>
       { renderList() }
-      <Pagination total={storyIds.length} pageSize={10} onChange={onPageChange} />
+      <Pagination
+        total={storyIds.length}
+        pageSize={10}
+        onChange={onPageChange}
+        responsive={true}
+      />
     </div>
   )
 };
