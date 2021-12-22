@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { List, ListRowProps } from 'react-virtualized';
-import Story from 'components/Story';
 import ListWithRank from 'components/ListWithRank';
+import { Pagination } from 'antd';
 
 import style from './style.module.scss';
 
@@ -12,36 +11,30 @@ type listviewProp = {
 };
 
 const Listview: React.FC<listviewProp> = ({ storyIds = [] }) => {
-  const renderStory = ({
-    index,
-    style
-  }: ListRowProps) => {
-    const id = storyIds[index];
-    // return <Story key={id} storyId={id} cssStyle={style} />
-    return <ListWithRank key={id} storyId={id} cssStyle={style} />
+  const [current, setCurrenct] = useState(1);
+
+  const onPageChange = (page: number) => {
+    console.log(page)
+    setCurrenct(page);
+    window.scrollTo(0, 0);
   };
 
+  const renderList = () => {
+    // 1: 0 ~ 9
+    // 2: 10 ~ 19
+    const end = current * 10;
+    const start = end - 10;
+    return storyIds
+      .slice(start, end)
+      .map(id => (
+        <ListWithRank key={id} storyId={id} />
+      ))
+  }
+
   return (
-    // <List
-    //   style={{
-    //     maxWidth: '100%',
-    //     padding: '0 16px',
-    //     maxHeight: 'calc(100% - 40px)'
-    //   }}
-    //   width={720}
-    //   height={1024}
-    //   rowCount={storyIds.length}
-    //   rowHeight={80}
-    //   rowRenderer={renderStory}
-    // />
     <div className={style.container}>
-      {
-        storyIds.map((d) => {
-          return (
-            <ListWithRank key={d} storyId={d} />
-          )
-        })
-      }
+      { renderList() }
+      <Pagination total={storyIds.length} pageSize={10} onChange={onPageChange} />
     </div>
   )
 };
