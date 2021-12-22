@@ -32,11 +32,9 @@ const Comment: FC<CommentProp> = ({ idList }) => {
           <div className={`${style.name} ${style.reply}`}>reply to</div>
 
           {/** children comment */}
-          <div className={style.other}>
-            {
-              data?.kids && <Comment idList={data?.kids} />
-            }
-          </div>
+          {
+            data?.kids && <Comment idList={data?.kids} />
+          }
         </div>
       </div>
     )
