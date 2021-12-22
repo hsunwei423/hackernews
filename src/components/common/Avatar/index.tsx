@@ -27,8 +27,9 @@ const Avatar: FC<AvatarProp> = ({ author = 'A' }) => {
   };
 
   const genRandomColor = () => {
+    const idx = Math.floor(Math.random() * colorList.length);
     return {
-      backgroundColor: colorList[0]
+      backgroundColor: colorList[idx]
     }
   };
 
