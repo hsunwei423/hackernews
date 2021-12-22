@@ -3,7 +3,6 @@ import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
 
-import CommentWrapper from 'components/CommentWrapper';
 import Comment from 'components/Comment';
 
 import style from './style.module.scss';
