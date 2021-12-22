@@ -70,13 +70,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
 
       {
         isCommentVisible && (
-          <CommentWrapper>
-            {
-              story?.kids && story?.kids.map((d: string) => (
-                <Comment key={d} id={d} />
-              ))
-            }
-          </CommentWrapper>
+          story?.kids && <Comment idList={story?.kids} />
         )
       }
     </div>

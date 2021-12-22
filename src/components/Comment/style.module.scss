@@ -1,7 +1,20 @@
+.wrapper {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #274059;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
 .container {
   display: flex;
   align-items: flex-start;
   column-gap: 16px;
+  row-gap: 16px;
 }
 
 .content {
@@ -19,4 +32,14 @@
   &:hover {
     color: #fff;
   }
+}
+.reply {
+  display: inline-block;
+  margin-top: 12px;
+}
+.other {
+  padding-left: 4px;
+}
+.htmlContent {
+  word-wrap: break-word;
 }

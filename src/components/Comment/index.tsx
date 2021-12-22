@@ -9,28 +9,46 @@ import style from './style.module.scss';
 const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
 type CommentProp = {
-  id: string
+  idList: string[]
 }
 
-const Comment: FC<CommentProp> = ({ id }) => {
-  const { data, error } = useSWR(
-    `/item/${id}.json`,
-    fetcher
-  );
-  console.log('comment', data);
+const Comment: FC<CommentProp> = ({ idList }) => {
+  const renderComment = (id: string) => {
+    const { data, error } = useSWR(
+      `/item/${id}.json`,
+      fetcher
+    );
 
-  const createMarkup = () => {
-    return {__html: data?.text};
-  }
+    if (error) {
+      return 'something went wrong';
+    }
+
+    return (
+      <div className={style.container}>
+        <Avatar author={data?.by} />
+        <div className={style.content}>
+          <span className={style.name}>{data?.by}</span>
+          <div className={style.htmlContent} dangerouslySetInnerHTML={{__html: data?.text}} />
+          <div className={`${style.name} ${style.reply}`}>reply to</div>
+
+          {/** children comment */}
+          <div className={style.other}>
+            {
+              data?.kids && <Comment idList={data?.kids} />
+            }
+          </div>
+        </div>
+      </div>
+    )
+  };
 
   return (
-    <div className={style.container}>
-      <Avatar author={data?.by} />
-      <div className={style.content}>
-        <div className={style.name}>{data?.by}</div>
-        <div dangerouslySetInnerHTML={createMarkup()} />
-        <div className={style.name}>reply to</div>
-      </div>
+    <div className={style.wrapper}>
+      {
+        idList.map(id => {
+          return renderComment(id);
+        })
+      }
     </div>
   )
 }
