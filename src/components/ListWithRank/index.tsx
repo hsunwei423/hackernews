@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import apiInstance from 'api';
 
 import Comment from 'components/Comment';
+import Skeleton from 'components/common/Skeleton';
 
 import style from './style.module.scss';
 
@@ -42,7 +43,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
   }
 
   return (
-    <div>
+    <Skeleton loading={loading}>
       <div className={style.container}>
         <div className={style.rank}>
           <img src="imgs/arrow-up.svg" alt="arrow" />
@@ -72,7 +73,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
           story?.kids && <Comment idList={story?.kids} />
         )
       }
-    </div>
+    </Skeleton>
   );
 };
 
