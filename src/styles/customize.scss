@@ -1,0 +1,34 @@
+.ant-pagination {
+  li {
+    border-radius: 50%;
+    > button {
+      border-radius: 50% !important;
+    }
+    .ant-pagination-item-link {
+      .ant-pagination-item-container {
+        .anticon-double-right {
+          
+        }
+        .ant-pagination-item-ellipsis {
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.mini {
+    color: #fff;
+    .ant-pagination-item {
+      a {
+        // color: #fff;
+      }  
+    }
+    li {
+      button, a {
+        // color: #fff; 
+      }
+      &.pagination-item-active {
+        color: #000;
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import ListWithRank from 'components/ListWithRank';
-import { Pagination } from 'antd';
+import Pagination from 'components/common/Pagination';
+// import { Pagination } from 'antd';
 
 import style from './style.module.scss';
 
