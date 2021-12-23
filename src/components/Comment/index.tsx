@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import apiInstance from 'api';
 
 import Avatar from 'components/common/Avatar';
+import Spinner from 'components/common/Spinner';
 
 import style from './style.module.scss';
 
@@ -23,6 +24,9 @@ const SingleComment: FC<SingleProp> = ({ id }) => {
     `/item/${id}.json`,
     fetcher
   );
+  const loading = !data && !error;
+
+  return <Spinner />
 
   if (error) {
     return <div>something went wrong</div>;
