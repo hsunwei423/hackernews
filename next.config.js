@@ -21,7 +21,8 @@ module.exports = {
       '/best': { page: '/best' },
       '/ask': { page: '/ask' },
       '/jobs': { page: '/jobs' },
-      '/show': { page: '/show' }
+      '/show': { page: '/show' },
+      '/comment': { page: '/comment' }
     }
   }
 }

@@ -24,6 +24,6 @@ export const getJobStoryIds = () => {
   return apiInstance.get('jobstories.json');
 };
 
-export const getStories = (storyId: number) => {
+export const getStories = (storyId: string) => {
   return apiInstance.get(`/item/${storyId}.json`);
 };
