@@ -6,6 +6,7 @@ import { getStories } from 'api/http';
 import Layout from 'components/Layout';
 import Comment from 'components/Comment';
 import Spinner from 'components/common/Spinner';
+import Story from 'components/Story';
 interface QueryType {
   id: string
 }
@@ -13,6 +14,17 @@ interface QueryType {
 const CommentPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [idList, setIdList] = useState<string[]>([]);
+  const [storyData, setStoryData] = useState({
+    by: "",
+    descendants: 0,
+    id: 0,
+    kids: [],
+    score: 0,
+    time: 0,
+    title: "",
+    type: "=",
+    url: "",
+  });
   const router = useRouter();
   const { id } = router.query as unknown as QueryType;
 
@@ -22,6 +34,7 @@ const CommentPage = () => {
       getStories(id)
         .then(res => {
           setIdList(res.data.kids);
+          setStoryData(res.data);
         })
         .catch((err) => {
           console.error(err)
@@ -45,7 +58,15 @@ const CommentPage = () => {
         {
           loading
             ? <Spinner />
-            : <Comment idList={idList} />
+            : <>
+                <Story 
+                  score={storyData.score}
+                  url={storyData.url}
+                  title={storyData.title}
+                  by={storyData.by}
+                />
+                <Comment idList={storyData.kids} />
+              </>
         }
       </Layout>
     </>
