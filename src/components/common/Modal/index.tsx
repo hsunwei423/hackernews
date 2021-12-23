@@ -12,13 +12,15 @@ const Modal: FC<ModalProp> = ({ visible, title, children }) => {
   return (
     <div className={`${style.container} ${!visible && style.hide}`}>
       <div className={style.content}>
-        <>
-          <div className={style['title-wrapper']}>
-            {title}
-          </div>
-          <div className={style.divider} />
-          {children}
-        </>
+        <div className={style.header}>
+          {title}
+        </div>
+
+        {children}
+        
+        <div className={style.footer}>
+          123
+        </div>
       </div>
     </div>
   )
