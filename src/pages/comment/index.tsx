@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { getStories } from 'api/http';
 
+import Layout from 'components/Layout';
 import Comment from 'components/Comment';
 
 interface QueryType {
@@ -37,7 +39,12 @@ const CommentPage = () => {
   // TODO: add loading spinner
   return (
     <>
-      <Comment idList={idList} />
+      <Head>
+        <title>Hacker News | Comment</title>
+      </Head>
+      <Layout>
+        <Comment idList={idList} />
+      </Layout>
     </>
   )
 };
