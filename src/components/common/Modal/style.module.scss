@@ -44,7 +44,15 @@
   height: 1px;
   background-color: #1f364d;
 }
+.main {
+  padding: 16px;
+  flex: 1;
+}
 .footer {
   border-top: 1px solid #1f364d;
   padding: 8px 16px;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
 }

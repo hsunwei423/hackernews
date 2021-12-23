@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+
+  background: linear-gradient(to right,#3ec7e0,#526bf4);
+  color: #fff;
+
+  cursor: pointer;
+}

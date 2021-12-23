@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 
+import Button from 'components/common/Button';
+
 import style from './style.module.scss';
 
 interface ModalProp  {
@@ -16,10 +18,12 @@ const Modal: FC<ModalProp> = ({ visible, title, children }) => {
           {title}
         </div>
 
-        {children}
+        <div className={style.main}>
+          {children}
+        </div>
         
         <div className={style.footer}>
-          123
+          <Button>Cancel</Button>
         </div>
       </div>
     </div>
