@@ -11,7 +11,7 @@ const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
 type CommentProp = {
   idList: string[],
-  noPaddingLeft: boolean
+  noPaddingLeft?: boolean
 }
 
 type SingleProp = {
