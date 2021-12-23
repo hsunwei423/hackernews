@@ -7,6 +7,8 @@ import Layout from 'components/Layout';
 import Comment from 'components/Comment';
 import Spinner from 'components/common/Spinner';
 import Story from 'components/Story';
+
+import style from './style.module.scss';
 interface QueryType {
   id: string
 }
@@ -58,7 +60,7 @@ const CommentPage = () => {
         {
           loading
             ? <Spinner />
-            : <>
+            : <div className={style.container}>
                 <Story 
                   score={storyData.score}
                   url={storyData.url}
@@ -66,7 +68,7 @@ const CommentPage = () => {
                   by={storyData.by}
                 />
                 <Comment idList={storyData.kids} />
-              </>
+              </div>
         }
       </Layout>
     </>
