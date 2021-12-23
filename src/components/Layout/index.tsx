@@ -57,7 +57,9 @@ const Layout: React.FC<LayoutProp> = ({ children }) => {
       <Drawer>
         {renderRouteList()}
       </Drawer>
-      {children}
+      <main className={style.main}>
+        {children}
+      </main>
     </div>
   );
 }
