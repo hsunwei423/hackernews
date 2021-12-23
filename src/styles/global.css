@@ -79,7 +79,9 @@ pre {
 
 a {
   background-color: transparent;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-wrap: break-all;
+  white-space: pre-wrap;
 }
 
 /**

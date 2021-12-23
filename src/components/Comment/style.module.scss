@@ -8,6 +8,10 @@
   flex-direction: column;
   column-gap: 16px;
   row-gap: 16px;
+
+  &.no-padding-left {
+    padding: 16px 0;
+  }
 }
 
 .container {
@@ -38,7 +42,9 @@
   margin-top: 12px;
 }
 .htmlContent {
-  word-wrap: break-word;
+  // word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 80%;
 }
 .load-more {
   color: #fff;

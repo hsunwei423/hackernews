@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, CSSProperties } from 'react';
 import useSWR from 'swr';
 import apiInstance from 'api';
 
@@ -10,7 +10,8 @@ import style from './style.module.scss';
 const fetcher = (url: string) => apiInstance.get(url).then(res => res.data);
 
 type CommentProp = {
-  idList: string[]
+  idList: string[],
+  noPaddingLeft: boolean
 }
 
 type SingleProp = {
@@ -44,14 +45,14 @@ const SingleComment: FC<SingleProp> = ({ id }) => {
 
         {/** children comment */}
         {
-          data?.kids && <Comment idList={data?.kids} />
+          data?.kids && <Comment idList={data?.kids} noPaddingLeft={true} />
         }
       </div>
     </div>
   )
 }
 
-const Comment: FC<CommentProp> = ({ idList }) => {
+const Comment: FC<CommentProp> = ({ idList, noPaddingLeft = false }) => {
   const [isExpand, setExpand] = useState<boolean>(false);
 
   const handleExpand = () => {
@@ -77,7 +78,7 @@ const Comment: FC<CommentProp> = ({ idList }) => {
   }
 
   return (
-    <div className={style.wrapper}>
+    <div className={`${style.wrapper} ${noPaddingLeft && style['no-padding-left']}`}>
       { renderList() }
     </div>
   )
