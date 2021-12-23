@@ -19,15 +19,12 @@
     color: #fff;
     .ant-pagination-item {
       a {
-        // color: #fff;
-      }  
-    }
-    li {
-      button, a {
-        // color: #fff; 
+        color: #fff;
       }
-      &.pagination-item-active {
-        color: #000;
+      &.ant-pagination-item-active {
+        a {
+          color: #000;
+        }
       }
     }
   }

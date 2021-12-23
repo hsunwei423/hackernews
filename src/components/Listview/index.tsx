@@ -36,6 +36,7 @@ const Listview: React.FC<listviewProp> = ({ storyIds = [] }) => {
       { renderList() }
       <Pagination
         total={storyIds.length}
+        defaultCurrent={1}
         pageSize={10}
         onChange={onPageChange}
         responsive={true}
