@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import style from './style.module.scss';
 
@@ -40,4 +40,4 @@ const Avatar: FC<AvatarProp> = ({ author = 'A' }) => {
   )
 };
 
-export default Avatar;
+export default React.memo(Avatar);
