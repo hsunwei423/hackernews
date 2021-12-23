@@ -5,6 +5,7 @@ import { useAppDispatch } from 'hooks/reduxHook';
 
 import Header from 'components/Header';
 import Drawer from 'components/Drawer';
+import UserInfo from 'components/UserInfo';
 
 import { ROUTE_LIST } from 'consts';
 import { closeDrawer } from 'reducers/drawer';
@@ -58,6 +59,8 @@ const Layout: React.FC<LayoutProp> = ({ children }) => {
       </Drawer>
       <main className={style.main}>
         {children}
+        
+        <UserInfo />
       </main>
     </div>
   );
