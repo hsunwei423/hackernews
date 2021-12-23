@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from 'hooks/reduxHook';
@@ -10,7 +10,6 @@ import { ROUTE_LIST } from 'consts';
 import { closeDrawer } from 'reducers/drawer';
 
 import style from './layout.module.scss';
-import { useEffect } from 'react';
 
 type LayoutProp = {
   children: ReactNode
