@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
+import { useAppSelector, useAppDispatch } from 'hooks/reduxHook';
 
 import Modal from 'components/common/Modal';
 
 import style from './style.module.scss';
 
 const UserInfo: FC = () => {
-  // TODO: open modal from redux
+  const visible = useAppSelector(state => state.userInfoReducer.visible);
 
   return (
     <div>
       <Modal
-        visible={true}
+        visible={visible}
         title={"User Info"}
       >
         <div>

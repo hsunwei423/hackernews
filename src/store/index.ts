@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import DrawerSlice from 'reducers/drawer';
+import UserInfoSlice from 'reducers/userInfo';
 
 export const store = configureStore({
   reducer: {
-    drawerReducer: DrawerSlice
+    drawerReducer: DrawerSlice,
+    userInfoReducer: UserInfoSlice
   }
 });
 
