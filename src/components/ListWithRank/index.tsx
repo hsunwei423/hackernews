@@ -1,9 +1,9 @@
 import React, { useState, FC, CSSProperties } from 'react';
+import { useRouter } from 'next/router';
 import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
 
-import Comment from 'components/Comment';
 import Skeleton from 'components/common/Skeleton';
 
 import style from './style.module.scss';
@@ -16,7 +16,7 @@ type StoryProps = {
 };
 
 const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
-  const [isCommentVisible, setCommentVisible] = useState(false);
+  const router = useRouter();
 
   const { data: story, error } = useSWR(`/item/${storyId}.json`, fetcher);
   const loading = !story && !error;
@@ -34,8 +34,13 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
     )}`;
   };
 
-  const handleComment = () => {
-    setCommentVisible((prev) => !prev);
+  const gotoComment = () => {
+    router.push({
+      pathname: '/comment',
+      query: {
+        id: storyId
+      }
+    })
   };
 
   if (error) {
@@ -59,7 +64,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
             {story?.descendants && (
               <>
                 <div className={style.divider} />
-                <div className={style.item} onClick={handleComment}>
+                <div className={style.item} onClick={gotoComment}>
                   {`${story?.descendants} comments`}
                 </div>
               </>
@@ -67,12 +72,6 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
           </div>
         </div>
       </div>
-
-      {
-        isCommentVisible && (
-          story?.kids && <Comment idList={story?.kids} />
-        )
-      }
     </Skeleton>
   );
 };
