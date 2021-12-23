@@ -26,7 +26,9 @@ const SingleComment: FC<SingleProp> = ({ id }) => {
   );
   const loading = !data && !error;
 
-  return <Spinner />
+  if (loading) {
+    return <Spinner />
+  }
 
   if (error) {
     return <div>something went wrong</div>;
