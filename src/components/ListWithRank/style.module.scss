@@ -27,6 +27,7 @@
 .detail {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   column-gap: 4px;
   color: #9cb3c9;
   .item {
