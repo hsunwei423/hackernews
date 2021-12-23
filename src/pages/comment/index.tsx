@@ -5,7 +5,7 @@ import { getStories } from 'api/http';
 
 import Layout from 'components/Layout';
 import Comment from 'components/Comment';
-
+import Spinner from 'components/common/Spinner';
 interface QueryType {
   id: string
 }
@@ -36,14 +36,17 @@ const CommentPage = () => {
     }
   }, [id])
 
-  // TODO: add loading spinner
   return (
     <>
       <Head>
         <title>Hacker News | Comment</title>
       </Head>
       <Layout>
-        <Comment idList={idList} />
+        {
+          loading
+            ? <Spinner />
+            : <Comment idList={idList} />
+        }
       </Layout>
     </>
   )
