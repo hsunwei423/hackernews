@@ -10,4 +10,13 @@
   color: #fff;
 
   cursor: pointer;
+
+  &.danger {
+    background: linear-gradient(to right,#e052a0,#f15c41);
+  }
+
+  &.simple {
+    background: none;
+    box-shadow: inset 0 0 0 3px #26425f;
+  }
 }

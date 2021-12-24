@@ -5,12 +5,24 @@ import Button from 'components/common/Button';
 import style from './style.module.scss';
 
 interface ModalProp  {
-  visible: boolean,
+  visible: boolean
   title?: string | ReactNode
   children: ReactNode
+  onOk?: () => void
+  onCancel?: () => void
+  okText?: string | ReactNode
+  cancelText?: string | ReactNode
 }
 
-const Modal: FC<ModalProp> = ({ visible, title, children }) => {
+const Modal: FC<ModalProp> = ({
+    visible,
+    title,
+    children,
+    onOk,
+    onCancel,
+    okText,
+    cancelText
+  }) => {
   return (
     <div className={`${style.container} ${!visible && style.hide}`}>
       <div className={style.content}>
@@ -23,7 +35,13 @@ const Modal: FC<ModalProp> = ({ visible, title, children }) => {
         </div>
         
         <div className={style.footer}>
-          <Button>Cancel</Button>
+          <Button onClick={onOk}>{okText || 'OK'}</Button>
+          <Button
+            type="simple"
+            onClick={onCancel}
+          >
+            {cancelText || 'Cancel'}
+          </Button>
         </div>
       </div>
     </div>
