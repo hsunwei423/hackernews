@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from 'hooks/reduxHook';
 import { getUserInfo } from 'api/http';
+import { closeUserModal } from 'reducers/userInfo';
+
 import Modal from 'components/common/Modal';
 import Avatar from 'components/common/Avatar';
 import Spinner from 'components/common/Spinner';
@@ -16,6 +18,7 @@ type userProp = {
 }
 
 const UserInfo: FC = () => {
+  const dispatch = useAppDispatch();
   const { visible, userId } = useAppSelector(state => state.userInfoReducer);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
@@ -47,7 +50,11 @@ const UserInfo: FC = () => {
 
   const handleSubmission = () => {
     // TODO: 
-  }
+  };
+
+  const handleClose = () => {
+    dispatch(closeUserModal());
+  };
 
   if (error) {
     return <div>No such user.</div>
@@ -62,6 +69,8 @@ const UserInfo: FC = () => {
       <Modal
         visible={visible}
         title={"User Info"}
+        onCancel={handleClose}
+        onOk={handleClose}
       >
         <div className={style.container}>
           <div className={style['name-wrapper']}>

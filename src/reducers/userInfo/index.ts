@@ -22,6 +22,7 @@ export const UserInfoSlice = createSlice({
     },
     closeUserModal: state => {
       state.visible = false;
+      state.userId = '';
     }
   }
 });

@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { getYear, getMonth, getDate } from 'date-fns';
 import useSWR from 'swr';
 import apiInstance from 'api';
+import { useAppDispatch } from 'hooks/reduxHook';
+import { openUserModal } from 'reducers/userInfo';
 
 import Skeleton from 'components/common/Skeleton';
 
@@ -17,6 +19,7 @@ type StoryProps = {
 
 const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const { data: story, error } = useSWR(`/item/${storyId}.json`, fetcher);
   const loading = !story && !error;
@@ -43,6 +46,12 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
     })
   };
 
+  const handleOpenUserInfo = () => {
+    dispatch(openUserModal({
+      userId: story.by
+    }));
+  }
+
   if (error) {
     return <div>something went wrong ...</div>;
   }
@@ -59,7 +68,7 @@ const ListWithRank: FC<StoryProps> = ({ storyId, cssStyle }) => {
             {story?.title}
           </a>
           <div className={style.detail}>
-            <div className={style.item}>{story?.by}</div>
+            <div className={style.item} onClick={handleOpenUserInfo}>{story?.by}</div>
             <div>•{renderTime()}</div>
             {story?.descendants && (
               <>
