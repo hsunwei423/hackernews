@@ -36,7 +36,7 @@ const UserInfo: FC = () => {
       setError(false);
       getUserInfo(userId)
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           setUserData(res.data);
         })
         .catch(err => {
@@ -56,13 +56,34 @@ const UserInfo: FC = () => {
     dispatch(closeUserModal());
   };
 
-  if (error) {
-    return <div>No such user.</div>
-  }
+  const renderContent = () => {
+    if (error) {
+      return <div>No such user.</div>
+    }
 
-  if (loading) {
-    return <Spinner />
-  }
+    if (loading) {
+      return (
+        <div className={style.container}>
+          <Spinner />
+        </div>
+      )
+    }
+    return (
+      <div className={style.container}>
+        <div className={style['name-wrapper']}>
+          <Avatar author={userData.id} />
+          <div>{userData.id}</div>
+        </div>
+        
+        <div>Created: {userData.created}</div>
+        <div>Karma: {userData.karma}</div>
+        <p>
+          {userData.about}
+        </p>
+        <div onClick={handleSubmission}>submissions</div>
+      </div>
+    )
+  };
 
   return (
     <div>
@@ -72,19 +93,7 @@ const UserInfo: FC = () => {
         onCancel={handleClose}
         onOk={handleClose}
       >
-        <div className={style.container}>
-          <div className={style['name-wrapper']}>
-            <Avatar author={userData.id} />
-            <div>{userData.id}</div>
-          </div>
-          
-          <div>Created: {userData.created}</div>
-          <div>Karma: {userData.karma}</div>
-          <p>
-            {userData.about}
-          </p>
-          <div onClick={handleSubmission}>submissions</div>
-        </div>
+        {renderContent()}
       </Modal>
     </div>
   )
