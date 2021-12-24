@@ -77,9 +77,7 @@ const UserInfo: FC = () => {
         
         <div>Created: {userData.created}</div>
         <div>Karma: {userData.karma}</div>
-        <p>
-          {userData.about}
-        </p>
+        <p dangerouslySetInnerHTML={{__html: userData.about }} />
         <div onClick={handleSubmission}>submissions</div>
       </div>
     )
