@@ -1,4 +1,5 @@
 .container {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,6 +19,7 @@
 }
 
 .content {
+  position: relative;
   width: 100%;
   max-width: 520px;
   min-height: 320px;
@@ -29,6 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: move 0.3s;
 }
 
 .header {
@@ -56,4 +59,15 @@
   flex-direction: row-reverse;
   align-items: center;
   column-gap: 16px;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }

@@ -10,7 +10,7 @@ import Spinner from 'components/common/Spinner';
 import style from './style.module.scss';
 
 type userProp = {
-  name: string,
+  id: string,
   created: number,
   karma: number,
   about: string,
@@ -23,7 +23,7 @@ const UserInfo: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [userData, setUserData] = useState<userProp>({
-    name: '',
+    id: '',
     created: 0,
     karma: 0,
     about: '',
@@ -74,8 +74,8 @@ const UserInfo: FC = () => {
       >
         <div className={style.container}>
           <div className={style['name-wrapper']}>
-            <Avatar author={userData.name} />
-            <div>{userData.name}</div>
+            <Avatar author={userData.id} />
+            <div>{userData.id}</div>
           </div>
           
           <div>Created: {userData.created}</div>

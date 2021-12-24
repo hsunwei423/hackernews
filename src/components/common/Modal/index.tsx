@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useEffect } from 'react';
 
 import Button from 'components/common/Button';
 
@@ -23,6 +23,17 @@ const Modal: FC<ModalProp> = ({
     okText,
     cancelText
   }) => {
+
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    }
+  }, [visible]);
+
   return (
     <div className={`${style.container} ${!visible && style.hide}`}>
       <div className={style.content}>
