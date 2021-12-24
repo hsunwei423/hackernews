@@ -27,3 +27,7 @@ export const getJobStoryIds = () => {
 export const getStories = (storyId: string) => {
   return apiInstance.get(`/item/${storyId}.json`);
 };
+
+export const getUserInfo = (userId: string) => {
+  return apiInstance.get(`/user/${userId}.json`);
+}

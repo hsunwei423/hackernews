@@ -7,7 +7,7 @@ interface IState {
 };
 
 const initialState: IState = {
-  visible: true,
+  visible: false,
   userId: ''
 };
 
